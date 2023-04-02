@@ -8,3 +8,17 @@
 .header button {
   padding: 3px;
 }
+form{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   align-items: center;
+   
+}
+lable{
+  padding: 5px;
+  margin: 5px;
+}
+button{
+  margin-top: 5px;
+}

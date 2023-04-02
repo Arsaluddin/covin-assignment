@@ -1,11 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
 
-function Card() {
-
+function Card({name,description}) {
+  
 
   return (
       <>
-         
+         <div>
+           <div>
+              <h2>{name}</h2>
+           </div>
+           <button>open</button>
+           <button>Delete</button>
+         </div>
       </>
   )
 }

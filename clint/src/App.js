@@ -3,8 +3,8 @@ import {BrowserRouter, Routes,Route,Link} from "react-router-dom";
 import { useState } from "react";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import Card from "./components/Card";
 import './App.css';
 
 const style = {
@@ -21,19 +21,45 @@ const style = {
 
 function App() {
 
+     const [history,setHistory] = useState(['clicked']);
      const [cards,setCards] = useState([]);
      const [open, setOpen] = useState(false);
      const handleOpen = () => setOpen(true);
      const handleClose = () => setOpen(false);
+     const handleHistory = () => {
+      
+     }
+
+     const handleSubmit = (e) => {
+        e.preventDefault()
+        const name = e.target[0].value;
+        const dec = e.target[1].value;
+        setCards([<Card name={name} description={dec}/>,...cards]);
+
+     }
 
   return (
     <div className="App">
       <BrowserRouter>
       
        <header className="header">
-         <Link to='History'>
-            <button>History</button>
-         </Link>
+         <div>
+          <Button onClick={handleHistory}>History</Button>
+          <Modal
+              open={open}
+              onClose={handleClose}
+             >
+             <Box>
+               <div>
+                {cards && cards.map((id) => {
+                   
+                     console.log(id)
+                   
+               })}
+               </div>
+             </Box>
+            </Modal>
+         </div>
          
           <div>
             <Button onClick={handleOpen}>+ Create Card</Button>
@@ -44,17 +70,19 @@ function App() {
               aria-describedby="modal-modal-description"
              >
              <Box sx={style}>
-               <form>
-                <label>card name</label>
-                <input></input>
-                <lable>Description</lable>
-                <input></input>
+               <form onSubmit={handleSubmit}>
+                 <label>Card Name</label>
+                 <input type='text' id="card" name="card"></input>
+                 <label>Description</label>
+                 <input type="text" placeholder="Descriotion"></input>
+                 <button type="submit">Submit</button>
                </form>
              </Box>
             </Modal>
           </div>
         
         </header>
+        
         
       </BrowserRouter>
 

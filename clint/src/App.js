@@ -50,13 +50,7 @@ function App() {
               onClose={handleClose}
              >
              <Box>
-               <div>
-                {cards && cards.map((id) => {
-                   
-                     console.log(id)
-                   
-               })}
-               </div>
+              
              </Box>
             </Modal>
          </div>
@@ -82,9 +76,16 @@ function App() {
           </div>
         
         </header>
-        
+        <div>
+           {cards && cards.map((id) => {
+                
+                <div>{id}</div>
+                console.log(id)
+           })}
+      </div>
         
       </BrowserRouter>
+     
 
     </div>
   );

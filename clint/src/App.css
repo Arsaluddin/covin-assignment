@@ -22,3 +22,8 @@ lable{
 button{
   margin-top: 5px;
 }
+
+.cards{
+  display: flex;
+  justify-content: center;
+}

@@ -25,7 +25,10 @@ function App() {
      const [cards,setCards] = useState([]);
      const [open, setOpen] = useState(false);
      const handleOpen = () => setOpen(true);
-     const handleClose = () => setOpen(false);
+     const handleClose = () => {
+      
+      setOpen(false);
+    }
      const handleHistory = () => {
       
      }
@@ -34,8 +37,8 @@ function App() {
         e.preventDefault()
         const name = e.target[0].value;
         const dec = e.target[1].value;
-        setCards([<Card name={name} description={dec}/>,...cards]);
-
+        setCards([{name,dec},...cards]);
+        setOpen(false);
      }
 
   return (
@@ -77,11 +80,16 @@ function App() {
         
         </header>
         <div>
-           {cards && cards.map((id) => {
+          
+          {cards && cards.map((id) => {
                 
-                <div>{id}</div>
-                console.log(id)
-           })}
+                return(
+                   <div className="cards">
+                      <Card name={id.name} description={id.dec}/>
+                   </div>
+                )
+            })}         
+           
       </div>
         
       </BrowserRouter>

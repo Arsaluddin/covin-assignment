@@ -29,6 +29,11 @@ const style = {
       
      }
 
+     const handleRemove = (indexToRemove) => {
+      const newArray = cards.filter(item => item !== indexToRemove);
+      setCards(newArray);
+     }
+
      const handleSubmit = (e) => {
         e.preventDefault()
         const name = e.target[0].value;
@@ -80,7 +85,7 @@ const style = {
                 
                 return(
                    <div className="cards">
-                      <Card name={id.name} description={id.dec}/>
+                      <Card key={cards.indexOf(id)} name={id.name} description={id.dec} handleRemove={() => handleRemove(cards.indexOf(id))}/>
                    </div>
                 )
             })}         

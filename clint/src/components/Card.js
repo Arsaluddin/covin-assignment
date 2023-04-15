@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import './Card.css';
 import {Link} from 'react-router-dom'
 
-function Card({name,description}) {
+function Card({name,description,handleremove}) {
   
    const [items,setItems] = useState([]) 
 
@@ -16,7 +16,7 @@ function Card({name,description}) {
            <Link to='/items'>
              <button>open</button>
            </Link>
-           <button>Delete</button>
+           <button onClick={handleremove}>Delete</button>
          </div>
       </>
   )
